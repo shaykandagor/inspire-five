@@ -1,4 +1,4 @@
-import { Box, Card, Image } from "@chakra-ui/react";
+import { Box, Card, Image, Link } from "@chakra-ui/react";
 import type { Quote } from "../../hooks/useQuotes";
 
 interface QuoteCardProps {
@@ -23,7 +23,14 @@ const QuoteCard = ({ quote }: QuoteCardProps) => {
       />
       <Box>
         <Card.Header fontSize={"2xl"} fontWeight="bold">
-          <Card.Title>{quote.a}</Card.Title>
+          <Card.Title>
+            <Link
+              variant="plain"
+              href={`/author/${encodeURIComponent(quote.a)}`} // Link to the author's page
+            >
+              {quote.a}
+            </Link>
+          </Card.Title>
         </Card.Header>
         <Card.Body>
           <Card.Header>{quote.q}</Card.Header>
