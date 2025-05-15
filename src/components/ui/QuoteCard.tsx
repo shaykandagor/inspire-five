@@ -26,7 +26,7 @@ const QuoteCard = ({ quote }: QuoteCardProps) => {
           <Card.Title>
             <Link
               variant="plain"
-              href={`/author/${encodeURIComponent(quote.a)}`} // Link to the author's page
+              href={`/author/${encodeURIComponent(quote.a)}`}
             >
               {quote.a}
             </Link>

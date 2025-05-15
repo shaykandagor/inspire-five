@@ -18,30 +18,62 @@ import {
   SkeletonText,
   Button,
   Stack,
-  InputElement,
   AvatarGroup,
   Avatar,
+  InputGroup,
 } from "@chakra-ui/react";
 import useQuotes from "../../hooks/useQuotes";
+import { LuSearch } from "react-icons/lu";
 
 const QuoteGrid = () => {
   const { quotes, error, loading } = useQuotes();
   const [authorSearch, setAuthorSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [keywordSearch, setKeywordSearch] = useState("");
 
-  // Filter quotes based on author search and selected category
+  const CATEGORIES = [
+    "Anxiety",
+    "Change",
+    "Choice",
+    "Confidence",
+    "Courage",
+    "Death",
+    "Dreams",
+    "Excellence",
+    "Failure",
+    "Fairness",
+    "Fear",
+    "Forgiveness",
+    "Freedom",
+    "Future",
+    "Happiness",
+    "Inspiration",
+    "Kindness",
+    "Leadership",
+    "Life",
+    "Living",
+    "Love",
+    "Pain",
+    "Past",
+    "Success",
+    "Time",
+    "Today",
+    "Truth",
+    "Work",
+  ];
+
   const filteredQuotes = useMemo(() => {
     return quotes.filter((quote) => {
       const matchesAuthor = quote.a
         .toLowerCase()
         .includes(authorSearch.toLowerCase());
-      const matchesCategory =
-        selectedCategory === "All" ||
-        (quote.c && quote.c.toLowerCase() === selectedCategory.toLowerCase());
+      const matchesCategory = quote.q
+        .toLowerCase()
+        .includes(keywordSearch.toLowerCase());
 
       return matchesAuthor && matchesCategory;
     });
-  }, [quotes, authorSearch, selectedCategory]);
+  }, [quotes, authorSearch, keywordSearch]);
+
   return (
     <Container maxW="container.xl" py={8}>
       <VStack align="stretch">
@@ -57,7 +89,7 @@ const QuoteGrid = () => {
         </Heading>
 
         <HStack direction={{ base: "column", md: "row" }}>
-          <InputElement>
+          <InputGroup startElement={<LuSearch />}>
             <Input
               placeholder="Search by author..."
               onChange={(e) => setAuthorSearch(e.target.value)}
@@ -72,19 +104,45 @@ const QuoteGrid = () => {
                 borderColor: "blue.400",
               }}
             />
-          </InputElement>
+          </InputGroup>
+          <InputGroup startElement={<LuSearch />}>
+            <Input
+              placeholder="Search by keyword..."
+              onChange={(e) => setKeywordSearch(e.target.value)}
+              value={keywordSearch}
+              list="keywords"
+              size="md"
+              borderRadius="md"
+              _focus={{
+                borderColor: "blue.500",
+                boxShadow: "0 0 0 2px blue.500",
+              }}
+              _hover={{
+                borderColor: "blue.400",
+              }}
+            />
+          </InputGroup>
         </HStack>
 
-        <HStack
-          direction={{ base: "column", md: "row" }}
-          align="center"
-          justify="space-between"
-          mb={6}
-          borderRadius="xl"
-          boxShadow="lg"
-          p={4}
-          bg="gray.50"
-        ></HStack>
+        <HStack mt={4} mb={6} justifyContent="center" flexWrap="wrap">
+          {CATEGORIES.map((category) => (
+            <Button
+              key={category}
+              onClick={() => setKeywordSearch(category)}
+              colorScheme="blue"
+              size="md"
+              borderRadius="md"
+              px={6}
+              boxShadow="sm"
+              _hover={{
+                transform: "translateY(-2px)",
+                boxShadow: "md",
+              }}
+            >
+              {category}
+            </Button>
+          ))}
+        </HStack>
 
         {loading && (
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} padding={6}>
@@ -155,7 +213,7 @@ const QuoteGrid = () => {
             <Button
               onClick={() => {
                 setAuthorSearch("");
-                setSelectedCategory("All");
+                setKeywordSearch("");
               }}
               colorScheme="blue"
               size="md"
