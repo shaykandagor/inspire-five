@@ -2,9 +2,6 @@ import React, { useState, useMemo } from "react";
 import {
   Box,
   Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
   Input,
   SimpleGrid,
   Text,
@@ -13,17 +10,14 @@ import {
   Flex,
   HStack,
   VStack,
-  Badge,
   SkeletonCircle,
   SkeletonText,
   Button,
-  Stack,
-  AvatarGroup,
-  Avatar,
   InputGroup,
 } from "@chakra-ui/react";
 import useQuotes from "../../hooks/useQuotes";
 import { LuSearch } from "react-icons/lu";
+import QuoteCard from "./QuoteCard";
 
 const QuoteGrid = () => {
   const { quotes, error, loading } = useQuotes();
@@ -232,79 +226,7 @@ const QuoteGrid = () => {
 
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3, xl: 4 }} padding={6}>
           {filteredQuotes.map((quote, index) => (
-            <Card.Root
-              key={index}
-              direction={{ base: "column", sm: "row" }}
-              overflow="hidden"
-              variant="outline"
-              borderRadius="xl"
-              boxShadow="md"
-              borderWidth="1px"
-              transition="all 0.3s ease"
-              _hover={{
-                transform: "translateY(-6px)",
-                boxShadow: "xl",
-                borderColor: "blue.300",
-              }}
-            >
-              <Box
-                minWidth={{ base: "100%", sm: "120px" }}
-                maxWidth={{ base: "100%", sm: "120px" }}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <AvatarGroup>
-                  <Avatar.Root>
-                    <Avatar.Fallback name={quote.a} />
-                    <Avatar.Image src={quote.i} />
-                  </Avatar.Root>
-                </AvatarGroup>
-              </Box>
-
-              <Stack flex="1" p={5}>
-                <CardHeader p={0} mb={3}>
-                  <Flex justify="space-between" align="center">
-                    <Heading size="md" fontWeight="bold" letterSpacing="tight">
-                      {quote.a}
-                    </Heading>
-                    {quote.c && (
-                      <Badge
-                        borderRadius="full"
-                        px={3}
-                        py={1}
-                        textTransform="capitalize"
-                        fontWeight="medium"
-                        fontSize="xs"
-                        letterSpacing="wide"
-                      >
-                        {quote.c}
-                      </Badge>
-                    )}
-                  </Flex>
-                </CardHeader>
-
-                <CardBody p={0}>
-                  <Text
-                    py={2}
-                    fontStyle="italic"
-                    fontSize="md"
-                    lineHeight="taller"
-                    letterSpacing="wide"
-                  >
-                    "{quote.q}"
-                  </Text>
-                </CardBody>
-
-                <CardFooter p={0} pt={3}>
-                  <HStack justify="space-between">
-                    <Text fontSize="xs" fontStyle="italic">
-                      Quote #{index + 1}
-                    </Text>
-                  </HStack>
-                </CardFooter>
-              </Stack>
-            </Card.Root>
+            <QuoteCard key={index} quote={quote} />
           ))}
         </SimpleGrid>
       </VStack>
