@@ -4,22 +4,22 @@ A single-page React + TypeScript application that displays inspiring quotes usin
 
 ## Features
 
--  **Landing Page**  
+### Landing Page 
   - Displays 5 random quotes that update daily at midnight (based on the user's local time).
   - Each quote includes the text, the author's name, and a placeholder image.
   - Author names are clickable and show a random quote by the same author.
 
--  **Author Search**  
+### Author Search 
   - Search for authors by typing part of their name.
   - Contextual dropdown with matching suggestions.
   - Clicking a result shows a random quote by the selected author.
 
--  **Keyword Search**  
+### Keyword Search 
   - Search for quotes by keyword.
   - Contextual dropdown with suggestions.
   - Clicking a keyword displays a quote that includes the selected word.
 
-##  Tech Stack
+### Tech Stack
 
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -27,7 +27,7 @@ A single-page React + TypeScript application that displays inspiring quotes usin
 - [Zen Quotes API](https://zenquotes.io/)
 - [React Router](https://reactrouter.com/) (for navigation)
 
-##  Live Demo
+###  Live Demo
 
 [Click here to view the project](https://your-live-demo-link.com) <!-- Add if deployed -->
 
