@@ -29,7 +29,7 @@ A single-page React + TypeScript application that displays inspiring quotes usin
 
 ###  Live Demo
 
-[Click here to view the project](https://your-live-demo-link.com) <!-- Add if deployed -->
+[Click here to view the project]([https://your-live-demo-link.com](https://drive.google.com/file/d/1coD32QPwvSQ-FwEb7vIq4ekvbGGgn81T/view?usp=sharing) <!-- Add if deployed -->
 
 ##  Getting Started
 
