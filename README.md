@@ -27,10 +27,6 @@ A single-page React + TypeScript application that displays inspiring quotes usin
 - [Zen Quotes API](https://zenquotes.io/)
 - [React Router](https://reactrouter.com/) (for navigation)
 
-###  Live Demo
-
-[Click here to view the project]([https://your-live-demo-link.com](https://drive.google.com/file/d/1coD32QPwvSQ-FwEb7vIq4ekvbGGgn81T/view?usp=sharing) <!-- Add if deployed -->
-
 ##  Getting Started
 
 Clone the repository and install dependencies:
