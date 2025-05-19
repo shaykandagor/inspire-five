@@ -1,6 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/ui/NavBar";
 import QuoteGrid from "./components/ui/QuoteGrid";
+import { Routes, Route } from "react-router-dom";
+import AuthorQuoteCard from "./components/AuthorQuoteCard";
 
 function App() {
   return (
@@ -14,10 +16,12 @@ function App() {
         <NavBar />
       </GridItem>
       <GridItem area="aside" display={{ base: "none", lg: "block" }}>
-        Aside
       </GridItem>
       <GridItem area="main">
-        <QuoteGrid />
+        <Routes>
+          <Route path="/" element={<QuoteGrid />} />
+          <Route path="/author/:name" element={<AuthorQuoteCard />} />
+        </Routes>
       </GridItem>
     </Grid>
   );
